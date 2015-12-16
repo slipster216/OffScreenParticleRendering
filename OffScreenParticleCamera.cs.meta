@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ae67a8d3816724829b6aa74553ad1452
+timeCreated: 1442439253
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - downsampleDepthFastShader: {fileID: 4800000, guid: 2d818a662e31a404b8d4681ccad0af78,
+      type: 3}
+  - compositeShader: {fileID: 4800000, guid: f187901ce181a447396cf53085ff7eb7, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
