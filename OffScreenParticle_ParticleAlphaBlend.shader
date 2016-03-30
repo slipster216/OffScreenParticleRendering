@@ -31,7 +31,7 @@ Category {
          #include "UnityCG.cginc"
 
          sampler2D _MainTex;
-         sampler2D _CameraDepthTexture;
+         sampler2D_float _CameraDepthTexture;
 
          fixed4 _TintColor;
          float _InvFade;

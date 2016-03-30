@@ -33,7 +33,7 @@ Shader "OffScreenParticles/CloudVolume_Offscreen"
             #include "UnityCG.cginc"
 
             sampler2D _MainTex;
-            sampler2D _CameraDepthTexture;
+            sampler2D_float _CameraDepthTexture;
             float _near_plane;
             float _fade_in_distance;
             float _fade_hold_distance;

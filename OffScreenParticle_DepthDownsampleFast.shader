@@ -16,7 +16,7 @@ Shader "Hidden/OffScreenParticles/DepthDownsampleFast"
 		float2 uv : TEXCOORD0;
 	};
 		
-	sampler2D _CameraDepthTexture;
+	sampler2D_float _CameraDepthTexture;
 	float2 _PixelSize;
 	float4 _MainTex_TexelSize;
    fixed _MSAA;

@@ -24,7 +24,7 @@ Shader "Hidden/OffScreenParticles/Upsample"
 			
 			sampler2D _ParticleRT;
 			sampler2D _CameraDepthLowRes;
-			sampler2D _CameraDepthTexture;
+			sampler2D_float _CameraDepthTexture;
 			float2 _LowResPixelSize;
 			float2 _LowResTextureSize;
 			float _DepthMult;
