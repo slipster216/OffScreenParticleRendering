@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+/// <summary>
 /// Off Screen Particle Rendering System
 /// ©2015 Disruptor Beam
 /// Written by Jason Booth (slipster216@gmail.com)
@@ -45,7 +47,7 @@ Shader "Hidden/OffScreenParticles/Upsample"
 			v2f vert (float4 pos : POSITION, float2 uv : TEXCOORD0)
 			{
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, pos);
+				o.pos = UnityObjectToClipPos(pos);
 				o.uv = uv;
 				   
 				// shift pixel by a half pixel, then create other uvs..
