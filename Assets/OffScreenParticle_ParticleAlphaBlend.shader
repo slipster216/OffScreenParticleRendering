@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 /// <summary>
 /// Off Screen Particle Rendering System
 /// ©2015 Disruptor Beam
@@ -54,8 +56,10 @@ Category {
          v2f vert (appdata_t v)
          {
             v2f o;
-            o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+            o.vertex = UnityObjectToClipPos(v.vertex);
             o.projPos = ComputeScreenPos (o.vertex);
+			COMPUTE_EYEDEPTH(o.projPos.z); // o.viewPos.z = o.projPos.z;
+
             o.color = v.color;
             o.texcoord = v.texcoord;
             return o;
@@ -65,14 +69,16 @@ Category {
          fixed4 frag (v2f i) : SV_Target
          {
             fixed4 col = i.color * _TintColor * tex2D(_MainTex, i.texcoord);
-            // Do Z clip
-            
+
+            // Do Z clip     
             float zbuf = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.projPos)));
-			   float partZ = i.projPos.z;
-			   float zalpha = saturate((zbuf - partZ + 1e-2f)*10000);
+			float partZ = i.projPos.z;
+			float zalpha = saturate((zbuf - partZ + 1e-2f)*10000);
+
             // soft particle
             float fade = saturate (_InvFade * (zbuf-partZ));
             col.a *= zalpha * fade;
+
             // premultiply alpha
             col.rgb *= col.a;
         
